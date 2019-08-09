@@ -1,0 +1,20 @@
+{
+    "name": "acme/acme-bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.2.9"
+    },
+    "require-dev": {
+        "symfony/config": "^4.4",
+        "symfony/dependency-injection": "^4.4",
+        "symfony/http-kernel": "^4.4",
+        "symfony/phpunit-bridge": "^4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Acme\\AcmeBundle\\": ""
+        }
+    }
+}
