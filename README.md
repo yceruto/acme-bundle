@@ -1,8 +1,8 @@
-Bundle directory structure for Symfony applications
-===================================================
+Upgrading directory structure of Symfony bundles
+================================================
 
-Short guide explaining how to migrate from the current directory structure 
-to the new structure convention.
+Short guide explaining how to upgrade your current directory structure 
+to be consistent with standards skeletons:
 
     └── AcmeBundle
         ├── assets/
@@ -21,7 +21,7 @@ to the new structure convention.
 AcmeBundle
 ----------
 
-Let's start with the current structure (see `master` branch):
+This is the current structure (see [`master`](https://github.com/yceruto/acme-bundle/tree/master) branch):
 
     └── AcmeBundle
         ├── DependencyInjection/
@@ -39,8 +39,8 @@ Let's start with the current structure (see `master` branch):
         ├── AcmeBundle.php
         └── composer.php
 
-As you can see, the current structure is mixing the source code with resource files, configuration, documentation, etc.
-which is not good enough as it is easy to get lost in large projects with tons of directories and files at the repository root.
+It is mixing the source code with resource files, configuration, documentation, etc.
+which is not good enough as it is easy to get lost in large bundles with tons of directories and files at the repository root.
 
 **composer.json file:**
 
@@ -53,19 +53,19 @@ which is not good enough as it is easy to get lost in large projects with tons o
 Regarding autoloading, it has a minor impact when building optimized autoloaders with composer as the test classes will be in the classmap, 
 that's not a huge deal if it's a few classes, but it's not zero-impact.
 
-In the next sections we will know how to change this structure without breaking the bundle functionality.
+In the next sections we will change the structure to solve these issues without breaking the bundle functionality.
 
 #### Revamped Version
 
 > The steps below refer to this sample repository, adjust them according to your case.
 
-Before start, let's install the dependencies and run the tests to make sure everything is well.
+Before start, let's install the dependencies and run the tests to make sure everything were well.
 
     $ cd AcmeBundle
     $ composer install
     $ ./vendor/bin/simple-phpunit
 
-First, creates a `src/` directory where all our source code will be placed:  
+Creates a `src/` directory where all our source code will be placed:  
 
     $ mkdir src/
     $ mv AcmeBundle.php DependencyInjection/ Model/ Resources/ Service/ src/
@@ -103,7 +103,7 @@ and update the `phpunit.xml` and `phpunit.xml.dist` files as well:
         </whitelist>
     </filter>
 
-Move `assets`, `bin` and `docs` directories at the root-level since they are not part of any Symfony directory convention:
+Move `assets/`, `bin/` and `docs/` directories at the root-level since they are not part of any Symfony directory convention:
 
     $ mv src/Resources/assets/ src/Resources/bin/ src/Resources/docs/ ./
 
